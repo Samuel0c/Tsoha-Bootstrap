@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Todo list</h1>
+  
+  <button class="btn btn-default">Add task</button>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Priority</th>
+        <th>Date added</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Read chapter 8</td>
+        <td>4</td>
+        <td>12.12.2012</td>
+      </tr>
+      <tr>
+        <td>Choose courses for period 3</td>
+        <td>5</td>
+        <td>15.12.2017</td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

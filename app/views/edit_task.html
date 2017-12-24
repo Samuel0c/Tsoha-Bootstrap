@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Edit task Read chapter 8</h1>
+<form>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox">
+            Done
+        </label>
+    </div>
+    <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" value="Read chapter 8" type="text">
+    </div>
+    <div class="form-group">
+        <label>Priority</label>
+        <form>
+            <label class="radio-inline">
+                <input type="radio" name="optradio">1
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="optradio">2
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="optradio">3
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="optradio">4
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="optradio">5
+            </label>
+        </form>
+    </div>
+    <div class="form-group">
+        <label>Notes</label>
+        <textarea class="form-control">Read the 8th chapter from Molecular Biology pages 88 - 130. Pay particular attention to the diagrams.
+        </textarea>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>
+{% endblock %}
