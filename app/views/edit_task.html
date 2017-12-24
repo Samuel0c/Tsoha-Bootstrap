@@ -34,12 +34,23 @@
         </form>
     </div>
     <div class="form-group">
+        <label>Topics</label>
+        <span class="label label-success">Studying</span>
+        <span class="label label-success">Molecular biology</span>
+        <select class="form-control" id="selectTopic">
+            <option>Gardening</option>
+            <option>Computer science</option>
+            <option>Home</option>
+        </select>
+        <button class="btn btn-default">Add</button>
+    </div>
+    <div class="form-group">
         <label>Notes</label>
         <textarea class="form-control">Read the 8th chapter from Molecular Biology pages 88 - 130. Pay particular attention to the diagrams.
         </textarea>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-success">Save</button>
     </div>
 </form>
 {% endblock %}
