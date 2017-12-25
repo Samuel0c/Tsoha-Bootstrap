@@ -32,3 +32,11 @@ $routes->get('/edit_topic', function() {
     HelloWorldController::edit_topic();
 });
 
+$routes->get('/login', function() {
+    HelloWorldController::login();
+});
+
+$routes->get('/register', function() {
+    HelloWorldController::register();
+});
+
