@@ -28,3 +28,7 @@ $routes->get('/add_task', function() {
     HelloWorldController::add_task();
 });
 
+$routes->get('/edit_topic', function() {
+    HelloWorldController::edit_topic();
+});
+
