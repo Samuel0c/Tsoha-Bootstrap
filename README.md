@@ -10,7 +10,7 @@ Sovelluksen näkymiä:
 * [Todo-listaus](http://samleppi.users.cs.helsinki.fi/ToDoManager/todo_list)
 * [Tehtävien editointi](http://samleppi.users.cs.helsinki.fi/ToDoManager/edit_task)
 * [Tehtävän tiedot](http://samleppi.users.cs.helsinki.fi/ToDoManager/show_task)
-* [Aihelistaus] (http://samleppi.users.cs.helsinki.fi/ToDoManager/topic_list)
+* [Aihelistaus](http://samleppi.users.cs.helsinki.fi/ToDoManager/topic_list)
 
 ## Työn aihe
 
