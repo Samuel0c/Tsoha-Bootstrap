@@ -25,5 +25,9 @@ class HelloWorldController extends BaseController {
     public static function show_task() {
         View::make('show_task.html');
     }
+    
+    public static function topic_list() {
+        View::make('topic_list.html');
+    }
 
 }

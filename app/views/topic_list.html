@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Topics</h1>
+
+<div class="form-group">
+    <input class="form-control" type="text">
+    <button class="btn btn-success">Add</button>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Studying</td>
+            <td><button class="btn btn-default">Edit</button>   <button class="btn btn-danger">Delete</button></td>
+        </tr>
+        <tr>
+            <td>Molecular biology</td>
+            <td><button class="btn btn-default">Edit</button>   <button class="btn btn-danger">Delete</button></td>
+        </tr>
+        <tr>
+            <td>Gardening</td>
+            <td><button class="btn btn-default">Edit</button>   <button class="btn btn-danger">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

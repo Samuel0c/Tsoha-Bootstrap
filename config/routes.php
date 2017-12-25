@@ -20,3 +20,7 @@ $routes->get('/show_task', function() {
     HelloWorldController::show_task();
 });
 
+$routes->get('/topic_list', function() {
+    HelloWorldController::topic_list();
+});
+
