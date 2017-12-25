@@ -14,6 +14,8 @@ Sovelluksen näkymiä:
 * [Tehtävän lisäys](http://samleppi.users.cs.helsinki.fi/ToDoManager/add_task)
 * [Aiheen editointi](http://samleppi.users.cs.helsinki.fi/ToDoManager/edit_topic)
 * [Kotisivu](http://samleppi.users.cs.helsinki.fi/ToDoManager/)
+* [Sisäänkirjautuminen](http://samleppi.users.cs.helsinki.fi/ToDoManager/login)
+* [Rekisteröityminen](http://samleppi.users.cs.helsinki.fi/ToDoManager/register)
 
 ## Työn aihe
 
