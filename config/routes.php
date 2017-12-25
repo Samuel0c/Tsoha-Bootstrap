@@ -24,3 +24,7 @@ $routes->get('/topic_list', function() {
     HelloWorldController::topic_list();
 });
 
+$routes->get('/add_task', function() {
+    HelloWorldController::add_task();
+});
+
