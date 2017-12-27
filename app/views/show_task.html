@@ -2,19 +2,31 @@
 
 {% block content %}
 <h1>Read chapter 8</h1>
+
+<table class="table table-bordered table-striped">
+    
+    <tbody>
+        <tr>
+            <td>Priority</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>Topics</td>
+            <td><span class="label label-success">Studying</span>     <span class="label label-success">Molecular biology</span></td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td><label class="label label-default">not done</label></td>
+        </tr>
+        <tr>
+            <td>Notes</td>
+            <td>Read the 8th chapter from Molecular Biology pages 88 - 130. Pay particular attention to the diagrams.</td>
+        </tr>
+    </tbody>
+</table>
+
 <p>
     <a href="#" class="btn btn-default">Edit</a> <button class="btn btn-danger">Delete</button>
 </p>
-<ul>
-    <li><strong>Priority:</strong> 3</li>
-    <li><label>Topics:</label>
-        <span class="label label-success">Studying</span>
-        <span class="label label-success">Molecular biology</span></li>
-    <li><strong>Status:</strong> <label class="label label-default">not done</label></li>
-</ul>
 
-<p>
-    <strong>Notes:</strong>
-    Read the 8th chapter from Molecular Biology pages 88 - 130. Pay particular attention to the diagrams.
-</p>
 {% endblock %}
