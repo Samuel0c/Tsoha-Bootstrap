@@ -1,10 +1,44 @@
-#main-container{
-  max-width: 1200px;
-  padding: 10px 25px;
-  margin: 0px auto;
+#main-container {
+    max-width: 1200px;
+    padding: 10px 25px;
+    margin: 0px auto;
 }
 
-.navbar .container-fluid{
-  max-width: 1200px;
-  margin: 0px auto;
+.navbar .container-fluid {
+    max-width: 1200px;
+    margin: 0px auto;
 }
+
+.tag {
+    font-size: 12px;
+    padding: .3em .4em .4em;
+    margin: 0 .1em;
+}
+.tag a {
+    color: #2ff002;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.tag a:hover {
+    opacity: 1.0
+}
+
+.tag .remove {
+    vertical-align: bottom;
+    top: 0;
+}
+
+.tag a {
+    margin: 0 0 0 .3em;
+}
+
+.tag a .glyphicon-white {
+    color: #fff;
+    margin-bottom: 2px;
+}
+
+.green, .green a {
+    background-color: #88df73;
+}
+
