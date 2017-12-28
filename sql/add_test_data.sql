@@ -1,5 +1,7 @@
 INSERT INTO RegisteredUser (username, password) VALUES ('Thymine', 'trollol');
 
+INSERT INTO RegisteredUser (username, password) VALUES ('Adenine', 'kukkaruukku');
+
 INSERT INTO Priority (importance_value) VALUES ('3');
 
 INSERT INTO Topic (name) VALUES ('Gardening');
