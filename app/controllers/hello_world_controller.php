@@ -1,6 +1,8 @@
 <?php
 
-require 'app/models/user.php';
+require 'app/models/User.php';
+require 'app/models/Task.php';
+require 'app/models/Priority.php';
 class HelloWorldController extends BaseController {
 
     public static function index() {
@@ -15,10 +17,14 @@ class HelloWorldController extends BaseController {
 //        echo 'Hello World!';
 //        View::make('helloworld.html');
         $user = User::find(1);
-        $users = User::all();
+        $task = Task::find(1);
+        $tasks = Task::all();
+        $priority = Priority::find(3);
         // Kint-luokan dump-metodi tulostaa muuttujan arvon
-        Kint::dump($users);
         Kint::dump($user);
+        Kint::dump($task);
+        Kint::dump($tasks);
+        Kint::dump($priority);
     }
 
     public static function todo_list() {

@@ -12,6 +12,13 @@ class Topic extends BaseModel {
         $query = DB::connection()->prepare('SELECT * FROM Topic WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $id));
         $row = $query->fetch();
+        if ($row) {
+            return new Topic(array(
+                'id' => $row['id'],
+                'name' => $row['name']
+            ));
+        }
+        return null;
     }
     
     public static function all() {

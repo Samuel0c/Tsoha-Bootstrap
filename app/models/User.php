@@ -1,6 +1,6 @@
 <?php
 
-class user extends BaseModel {
+class User extends BaseModel {
 
     public $id, $username, $password;
 
@@ -12,6 +12,14 @@ class user extends BaseModel {
         $query = DB::connection()->prepare('SELECT * FROM RegisteredUser WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $id));
         $row = $query->fetch();
+        if ($row) {
+            return new User(array(
+                'id' => $row['id'],
+                'username' => $row['username'],
+                'password' => $row['password']
+            ));
+        }
+        return null;
     }
 
     public static function all() {
