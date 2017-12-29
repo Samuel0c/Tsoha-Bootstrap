@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Read chapter 8</h1>
+<h1>{{task.task_name}}</h1>
 
 <table class="table table-bordered table-striped">
-    
+
     <tbody>
         <tr>
             <td>Priority</td>
-            <td>3</td>
+            <td>{{task.priority}}</td>
         </tr>
         <tr>
             <td>Topics</td>
@@ -16,11 +16,17 @@
         </tr>
         <tr>
             <td>Status</td>
-            <td><label class="label label-default">not done</label></td>
+            <td>
+                {% if task.status %}
+                <label class="label label-default">done</label>
+                {% else %}
+                <label class="label label-default">not done</label>
+                {% endif %}
+            </td>
         </tr>
         <tr>
             <td>Notes</td>
-            <td>Read the 8th chapter from Molecular Biology pages 88 - 130. Pay particular attention to the diagrams.</td>
+            <td>{{task.notes}}</td>
         </tr>
     </tbody>
 </table>

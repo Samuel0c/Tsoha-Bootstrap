@@ -9,27 +9,27 @@ $routes->get('/hiekkalaatikko', function() {
 });
 
 $routes->get('/todo_list', function() {
-    HelloWorldController::todo_list();
+    TaskController::todo_list();
 });
 
 $routes->get('/edit_task', function() {
     HelloWorldController::edit_task();
 });
 
-$routes->get('/show_task', function() {
-    HelloWorldController::show_task();
+$routes->get('/show_task/:id', function($id) {
+    TaskController::show_task($id);
 });
 
 $routes->get('/topic_list', function() {
-    HelloWorldController::topic_list();
+    TopicController::topic_list();
 });
 
 $routes->get('/add_task', function() {
     HelloWorldController::add_task();
 });
 
-$routes->get('/edit_topic', function() {
-    HelloWorldController::edit_topic();
+$routes->get('/edit_topic/:id', function($id) {
+    TopicController::edit_topic($id);
 });
 
 $routes->get('/login', function() {

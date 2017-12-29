@@ -16,18 +16,13 @@
         </tr>
     </thead>
     <tbody>
+        {% for topic in topics %}
         <tr>
-            <td>Studying</td>
-            <td><button class="btn btn-default">Edit</button>   <button class="btn btn-danger">Delete</button></td>
+            <td>{{topic.name}}</td>
+            <td><button href="{{base_path}}/edit_topic/{{topic.id}}" class="btn btn-default">Edit</button>   
+                <button class="btn btn-danger">Delete</button></td>
         </tr>
-        <tr>
-            <td>Molecular biology</td>
-            <td><button class="btn btn-default">Edit</button>   <button class="btn btn-danger">Delete</button></td>
-        </tr>
-        <tr>
-            <td>Gardening</td>
-            <td><button class="btn btn-default">Edit</button>   <button class="btn btn-danger">Delete</button></td>
-        </tr>
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}
