@@ -1,6 +1,6 @@
 <?php
+
 require 'app/models/user.php';
-require 'app/models/hello_world.php';
 class HelloWorldController extends BaseController {
 
     public static function index() {
@@ -11,7 +11,7 @@ class HelloWorldController extends BaseController {
 
     public static function sandbox() {
         // Testaa koodiasi täällä
-        echo HelloWorld::say_hi();
+//        echo HelloWorld::say_hi();
 //        echo 'Hello World!';
 //        View::make('helloworld.html');
         $user = User::find(1);
