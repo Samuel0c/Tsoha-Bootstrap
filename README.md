@@ -8,11 +8,11 @@ Yleisiä linkkejä:
 Sovelluksen näkymiä:
 
 * [Todo-listaus](http://samleppi.users.cs.helsinki.fi/ToDoManager/todo_list)
-* [Tehtävien editointi](http://samleppi.users.cs.helsinki.fi/ToDoManager/edit_task)
-* [Tehtävän tiedot](http://samleppi.users.cs.helsinki.fi/ToDoManager/show_task)
+* [Tehtävien editointi](http://samleppi.users.cs.helsinki.fi/ToDoManager/edit_task/1)
+* [Tehtävän tiedot](http://samleppi.users.cs.helsinki.fi/ToDoManager/show_task/1)
 * [Aihelistaus](http://samleppi.users.cs.helsinki.fi/ToDoManager/topic_list)
 * [Tehtävän lisäys](http://samleppi.users.cs.helsinki.fi/ToDoManager/add_task)
-* [Aiheen editointi](http://samleppi.users.cs.helsinki.fi/ToDoManager/edit_topic)
+* [Aiheen editointi](http://samleppi.users.cs.helsinki.fi/ToDoManager/edit_topic/1)
 * [Kotisivu](http://samleppi.users.cs.helsinki.fi/ToDoManager/)
 * [Sisäänkirjautuminen](http://samleppi.users.cs.helsinki.fi/ToDoManager/login)
 * [Rekisteröityminen](http://samleppi.users.cs.helsinki.fi/ToDoManager/register)
