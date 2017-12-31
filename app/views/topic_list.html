@@ -19,7 +19,7 @@
         {% for topic in topics %}
         <tr>
             <td>{{topic.name}}</td>
-            <td><button href="{{base_path}}/edit_topic/{{topic.id}}" class="btn btn-default">Edit</button>   
+            <td><a href="{{base_path}}/edit_topic/{{topic.id}}" class="btn btn-default">Edit</a> 
                 <button class="btn btn-danger">Delete</button></td>
         </tr>
         {% endfor %}
