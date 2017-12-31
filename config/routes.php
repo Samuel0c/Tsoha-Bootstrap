@@ -12,8 +12,8 @@ $routes->get('/todo_list', function() {
     TaskController::todo_list();
 });
 
-$routes->get('/edit_task', function() {
-    HelloWorldController::edit_task();
+$routes->get('/edit_task/:id', function($id) {
+    TaskController::edit_task($id);
 });
 
 $routes->get('/show_task/:id', function($id) {
