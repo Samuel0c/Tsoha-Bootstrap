@@ -8,6 +8,14 @@ $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
 });
 
+$routes->post('/todo_list', function() {
+    TaskController::store();
+});
+
+$routes->get('/add_task', function() {
+    TaskController::add_task();
+});
+
 $routes->get('/todo_list', function() {
     TaskController::todo_list();
 });
@@ -25,7 +33,7 @@ $routes->get('/topic_list', function() {
 });
 
 $routes->get('/add_task', function() {
-    HelloWorldController::add_task();
+    TaskController::add_task();
 });
 
 $routes->get('/edit_topic/:id', function($id) {

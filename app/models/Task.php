@@ -43,4 +43,11 @@ class Task extends BaseModel {
         return $tasks;
     }
 
+    public function save() {
+        $query = DB::connection()->prepare('INSERT INTO Task (task_name, status, notes, owner_id, priority) VALUES (:task_name, :status, :notes, :owner_id, :priority) RETURNING id');
+        $query->execute(array('task_name' => $this->task_name, 'status' => $this->status, 'notes' => $this->notes, 'owner_id' => $this->owner_id, 'priority' => $this->priority));
+        $row = $query->fetch();
+        $this->id = $row['id'];
+    }
+
 }

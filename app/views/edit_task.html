@@ -1,37 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Edit task Read chapter 8</h1>
-<form>
+<h1>Edit task {{task.task_name}}</h1>
+<form method="post" action="{{base_path}}/todo_list">
     <div class="checkbox">
         <label>
-            <input type="checkbox">
+            <input type="checkbox" name="status">
             Done
         </label>
     </div>
     <div class="form-group">
         <label>Name</label>
-        <input class="form-control" value="Read chapter 8" type="text">
+        <input class="form-control" value={{task.task_name}} type="text" name="task_name">
     </div>
     <div class="form-group">
         <label>Priority</label>
-        <form>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">1
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">2
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">3
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">4
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">5
-            </label>
-        </form>
+        <label class="radio-inline">
+            <input type="radio" name="priority" value="1">1
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="priority" value="2">2
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="priority" value="3">3
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="priority" value="4">4
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="priority" value="5">5
+        </label>
     </div>
     <div class="form-group">
         <label>Topics</label>
@@ -52,7 +50,7 @@
     </div>
     <div class="form-group">
         <label>Notes</label>
-        <textarea class="form-control">Read the 8th chapter from Molecular Biology pages 88 - 130. Pay particular attention to the diagrams.
+        <textarea class="form-control">{{task.notes}}
         </textarea>
     </div>
     <div class="form-group">

@@ -27,10 +27,6 @@ class HelloWorldController extends BaseController {
         Kint::dump($priority);
     }
 
-    public static function add_task() {
-        View::make('add_task.html');
-    }
-
     public static function login() {
         View::make('login.html');
     }

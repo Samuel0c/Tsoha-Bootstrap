@@ -2,34 +2,33 @@
 
 {% block content %}
 <h1>New task</h1>
-<form>
+
+<form method="post" action="{{base_path}}/todo_list">
     <div class="form-group">
         <label>Name</label>
-        <input class="form-control" type="text">
+        <input class="form-control" type="text" name="task_name">
     </div>
     <div class="form-group">
         <label>Priority</label>
-        <form>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">1
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">2
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">3
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">4
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">5
-            </label>
-        </form>
+        <label class="radio-inline">
+            <input type="radio" name="priority" value="1">1
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="priority" value="2">2
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="priority" value="3">3
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="priority" value="4">4
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="priority" value="5">5
+        </label>
     </div>
     <div class="form-group">
         <label>Topics</label>
-        <select class="form-control" id="selectTopic">
+        <select class="form-control" name="selectTopic">
             <option>Gardening</option>
             <option>Computer science</option>
             <option>Home</option>
@@ -38,7 +37,7 @@
     </div>
     <div class="form-group">
         <label>Notes</label>
-        <textarea class="form-control">
+        <textarea class="form-control" name="notes">
         </textarea>
     </div>
     <div class="form-group">
