@@ -28,6 +28,10 @@ $routes->get('/show_task/:id', function($id) {
     TaskController::show_task($id);
 });
 
+$routes->post('/topic_list', function() {
+    TopicController::store();
+});
+
 $routes->get('/topic_list', function() {
     TopicController::topic_list();
 });
