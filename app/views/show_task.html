@@ -12,7 +12,9 @@
         </tr>
         <tr>
             <td>Topics</td>
-            <td><span class="label green">Studying</span>     <span class="label green">Molecular biology</span></td>
+            {% for topic in topics %}
+            <td><span class="label green">{{topic.name}}</span>   </td>  
+            {% endfor %}
         </tr>
         <tr>
             <td>Status</td>

@@ -9,7 +9,8 @@ class TaskController extends BaseController {
 
     public static function show_task($id) {
         $task = Task::find($id);
-        View::make('show_task.html', array('task' => $task));
+        $topics = Task_topic::findByTask($id);
+        View::make('show_task.html', array('task' => $task, 'topics' => $topics));
     }
 
     public static function edit_task($id) {
