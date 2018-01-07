@@ -15,7 +15,12 @@ class TaskController extends BaseController {
 
     public static function edit_task($id) {
         $task = Task::find($id);
-        View::make('edit_task.html', array('task' => $task));
+        $task_topics = array_map(function ($task) {
+            return $task->id;
+        }, Task_topic::findByTask($id));
+        
+        $topics = Topic::all();
+        View::make('edit_task.html', array('task' => $task, 'task_topics' => $task_topics, 'topics' => $topics));
     }
 
     public static function add_task() {
@@ -33,9 +38,9 @@ class TaskController extends BaseController {
             'owner_id' => 1,
             'priority' => $params['priority']
         ));
-        
+
         $task->save();
-        
+
         foreach ($params['topic_ids'] as $topic_id) {
             $task_topic = new Task_topic(array(
                 'topic_id' => $topic_id,
@@ -43,7 +48,7 @@ class TaskController extends BaseController {
             ));
             $task_topic->save();
         }
-        
+
         Redirect::to('/show_task/' . $task->id, array('message' => 'New task added successfully'));
     }
 

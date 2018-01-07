@@ -33,20 +33,15 @@
     </div>
     <div class="form-group">
         <label>Topics</label>
-        <span class="tag label label-info green">
-            <span>Studying</span>
-            <a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a> 
-        </span>
-        <span class="tag label label-info green">
-            <span>Molecular biology</span>
-            <a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a> 
-        </span>
-        <select class="form-control" id="selectTopic">
-            <option>Gardening</option>
-            <option>Computer science</option>
-            <option>Home</option>
-        </select>
-        <button class="btn btn-default">Add</button>
+        {% for topic in topics %}
+        <div class="checkbox">
+            {% if topic.id in task_topics %}
+            <label><input type="checkbox" checked name="topic_ids[]" value={{topic.id}}>{{topic.name}}</label>
+            {% else %}
+            <label><input type="checkbox" name="topic_ids[]" value={{topic.id}}>{{topic.name}}</label>
+            {% endif %}
+        </div>
+        {% endfor %}
     </div>
     <div class="form-group">
         <label>Notes</label>
