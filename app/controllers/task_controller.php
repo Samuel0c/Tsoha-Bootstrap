@@ -19,7 +19,8 @@ class TaskController extends BaseController {
     }
 
     public static function add_task() {
-        View::make('add_task.html');
+        $topics = Topic::all();
+        View::make('add_task.html', array('topics' => $topics));
     }
 
     public static function store() {
@@ -32,7 +33,17 @@ class TaskController extends BaseController {
             'owner_id' => 1,
             'priority' => $params['priority']
         ));
+        
         $task->save();
+        
+        foreach ($params['topic_ids'] as $topic_id) {
+            $task_topic = new Task_topic(array(
+                'topic_id' => $topic_id,
+                'task_id' => $task->id
+            ));
+            $task_topic->save();
+        }
+        
         Redirect::to('/show_task/' . $task->id, array('message' => 'New task added successfully'));
     }
 

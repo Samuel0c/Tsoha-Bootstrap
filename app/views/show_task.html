@@ -12,9 +12,11 @@
         </tr>
         <tr>
             <td>Topics</td>
-            {% for topic in topics %}
-            <td><span class="label green">{{topic.name}}</span>   </td>  
-            {% endfor %}
+            <td>
+                {% for topic in topics %}
+                <span class="label green">{{topic.name}}</span>
+                {% endfor %}
+            </td>
         </tr>
         <tr>
             <td>Status</td>

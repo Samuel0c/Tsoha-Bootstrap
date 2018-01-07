@@ -28,12 +28,11 @@
     </div>
     <div class="form-group">
         <label>Topics</label>
-        <select class="form-control" name="selectTopic">
-            <option>Gardening</option>
-            <option>Computer science</option>
-            <option>Home</option>
-        </select>
-        <button class="btn btn-default">Add</button>
+        {% for topic in topics %}
+        <div class="checkbox">
+            <label><input type="checkbox" name="topic_ids[]" value={{topic.id}}>{{topic.name}}</label>
+        </div>
+        {% endfor %}
     </div>
     <div class="form-group">
         <label>Notes</label>

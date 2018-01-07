@@ -12,7 +12,7 @@
 .tag {
     font-size: 12px;
     padding: .3em .4em .4em;
-    margin: 0 .1em;
+    margin: 0 .5em;
 }
 .tag a {
     color: #2ff002;
@@ -41,4 +41,3 @@
 .green, .green a {
     background-color: #88df73;
 }
-
