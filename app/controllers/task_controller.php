@@ -57,4 +57,39 @@ class TaskController extends BaseController {
         Redirect::to('/show_task/' . $task->id, array('message' => 'New task added successfully'));
     }
 
+    public static function update($id) {
+        $params = $_POST;
+
+        $attributes = array(
+            'id' => $id,
+            'task_name' => isset($params['task_name']) ? $params['task_name'] : null,
+            'status' => 'false',
+            'notes' => isset($params['notes']) ? $params['notes'] : null,
+            // change owner id once login has been implemented
+            'owner_id' => 1,
+            'priority' => isset($params['priority']) ? $params['priority'] : null
+        );
+
+        $task = new Task($attributes);
+        $errors = $task->errors();
+
+        if (empty($errors)) {
+            $task->update();
+            $task->delete_linked_topics($id);
+
+            foreach ($params['topic_ids'] as $topic_id) {
+                $task_topic = new Task_topic(array(
+                    'topic_id' => $topic_id,
+                    'task_id' => $task->id
+                ));
+                $task_topic->save();
+            }
+            
+            Redirect::to('/show_task/' . $task->id, array('message' => 'New task added successfully'));
+        } else {
+            $topics = Topic::all();
+            View::make('add_task.html', array('topics' => $topics, 'errors' => $errors, 'attributes' => $attributes));
+        }
+    }
+
 }

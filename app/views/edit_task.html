@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>Edit task {{task.task_name}}</h1>
-<form method="post" action="{{base_path}}/todo_list">
+<form method="post" action="{{base_path}}/edit_task/{{task.id}}">
     <div class="checkbox">
         <label>
             <input type="checkbox" name="status">

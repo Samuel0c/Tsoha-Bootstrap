@@ -43,6 +43,13 @@ class Topic extends BaseModel {
         $this->id = $row['id'];
     }
     
+    public function delete($id) {
+        $query= DB::connection()->prepare('DELETE FROM Task_topic WHERE topic_id=:id');
+        $query->execute(array('id' => $id));
+        $query = DB::connection()->prepare('DELETE FROM Topic WHERE id=:id');
+        $query->execute(array('id' => $id));
+    }
+    
     public function validate_name() {
         return $this->validate_string_length($this->name, 3);
     }

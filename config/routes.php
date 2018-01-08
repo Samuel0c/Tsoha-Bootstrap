@@ -20,6 +20,10 @@ $routes->get('/todo_list', function() {
     TaskController::todo_list();
 });
 
+$routes->post('/edit_task/:id', function($id) {
+    TaskController::update($id);
+});
+
 $routes->get('/edit_task/:id', function($id) {
     TaskController::edit_task($id);
 });

@@ -50,6 +50,22 @@ class Task extends BaseModel {
         $row = $query->fetch();
         $this->id = $row['id'];
     }
+    
+    public function update() {
+        $query = DB::connection()->prepare('UPDATE Task SET task_name=:task_name, status=:status, notes=:notes, owner_id=:owner_id, priority=:priority WHERE id=:id');
+        $query->execute(array('id' => $this->id,'task_name' => $this->task_name, 'status' => $this->status, 'notes' => $this->notes, 'owner_id' => $this->owner_id, 'priority' => $this->priority));
+    }
+    
+    public function delete($id) {
+        $this->delete_linked_topics($id);
+        $query = DB::connection()->prepare('DELETE FROM Task WHERE id=:id');
+        $query->execute(array('id' => $id));
+    }
+    
+    public function delete_linked_topics($id) {
+        $query= DB::connection()->prepare('DELETE FROM Task_topic WHERE task_id=:id');
+        $query->execute(array('id' => $id));
+    }
 
     public function validate_task_name() {
         return $this->validate_string_length($this->task_name, 3);
