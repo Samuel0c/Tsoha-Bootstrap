@@ -18,7 +18,7 @@ class TaskController extends BaseController {
         $task_topics = array_map(function ($task) {
             return $task->id;
         }, Task_topic::findByTask($id));
-        
+
         $topics = Topic::all();
         View::make('edit_task.html', array('task' => $task, 'task_topics' => $task_topics, 'topics' => $topics));
     }
@@ -30,17 +30,23 @@ class TaskController extends BaseController {
 
     public static function store() {
         $params = $_POST;
-        $task = new Task(array(
-            'task_name' => $params['task_name'],
+        $attributes = array(
+            'task_name' => isset($params['task_name']) ? $params['task_name'] : null,
             'status' => 'false',
             'notes' => $params['notes'],
             // change owner id once login has been implemented
             'owner_id' => 1,
-            'priority' => $params['priority']
-        ));
+            'priority' => isset($params['priority']) ? $params['priority'] : null
+        );
+        $task = new Task($attributes);
+        $errors = $task->errors();
 
-        $task->save();
-
+        if (count($errors) == 0) {
+            $task->save();
+        } else {
+            $topics = Topic::all();
+            View::make('add_task.html', array('topics' => $topics, 'errors' => $errors, 'attributes' => $attributes));
+        }
         foreach ($params['topic_ids'] as $topic_id) {
             $task_topic = new Task_topic(array(
                 'topic_id' => $topic_id,
@@ -48,7 +54,6 @@ class TaskController extends BaseController {
             ));
             $task_topic->save();
         }
-
         Redirect::to('/show_task/' . $task->id, array('message' => 'New task added successfully'));
     }
 

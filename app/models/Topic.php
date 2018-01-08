@@ -6,6 +6,7 @@ class Topic extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->validators = array('validate_name');
     }
 
     public static function find($id) {
@@ -40,6 +41,10 @@ class Topic extends BaseModel {
         $query->execute(array('name' => $this->name));
         $row = $query->fetch();
         $this->id = $row['id'];
+    }
+    
+    public function validate_name() {
+        return $this->validate_string_length($this->name, 3);
     }
 
 }

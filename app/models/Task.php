@@ -6,6 +6,7 @@ class Task extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->validators = array('validate_task_name', 'validate_priority');
     }
 
     public static function find($id) {
@@ -48,6 +49,18 @@ class Task extends BaseModel {
         $query->execute(array('task_name' => $this->task_name, 'status' => $this->status, 'notes' => $this->notes, 'owner_id' => $this->owner_id, 'priority' => $this->priority));
         $row = $query->fetch();
         $this->id = $row['id'];
+    }
+
+    public function validate_task_name() {
+        return $this->validate_string_length($this->task_name, 3);
+    }
+
+    public function validate_priority() {
+        $errors = array();
+        if ($this->priority == null || $this->priority == '') {
+            $errors[] = 'Priority can not be empty';
+        }
+        return $errors;
     }
 
 }

@@ -3,11 +3,12 @@
 require 'app/models/User.php';
 require 'app/models/Task.php';
 require 'app/models/Priority.php';
+
 class HelloWorldController extends BaseController {
 
     public static function index() {
         // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
-   	  View::make('home.html');
+        View::make('home.html');
 //        echo 'Tämä on etusivu!';
     }
 
@@ -16,15 +17,16 @@ class HelloWorldController extends BaseController {
 //        echo HelloWorld::say_hi();
 //        echo 'Hello World!';
 //        View::make('helloworld.html');
-        $user = User::find(1);
-        $task = Task::find(1);
-        $tasks = Task::all();
-        $priority = Priority::find(3);
-        // Kint-luokan dump-metodi tulostaa muuttujan arvon
-        Kint::dump($user);
-        Kint::dump($task);
-        Kint::dump($tasks);
-        Kint::dump($priority);
+        $doom = new Task(array(
+            'task_name' => 't',
+            'status' => '',
+            'notes' => 'notesss',
+            'owner_id' => '1',
+            'priority' => ''
+        ));
+        $errors = $doom->errors();
+
+        Kint::dump($errors);
     }
 
     public static function login() {
