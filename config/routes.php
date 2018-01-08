@@ -28,6 +28,10 @@ $routes->get('/edit_task/:id', function($id) {
     TaskController::edit_task($id);
 });
 
+$routes->post('/show_task/:id', function($id) {
+    TaskController::destroy($id);
+});
+
 $routes->get('/show_task/:id', function($id) {
     TaskController::show_task($id);
 });

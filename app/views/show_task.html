@@ -35,8 +35,9 @@
     </tbody>
 </table>
 
-<p>
-    <a href="{{base_path}}/edit_task/{{task.id}}" class="btn btn-default">Edit</a> <button class="btn btn-danger">Delete</button>
-</p>
+<form method="post" action="{{base_path}}/show_task/{{task.id}}">
+<a href="{{base_path}}/edit_task/{{task.id}}" class="btn btn-default">Edit</a> <button class="btn btn-danger">Delete</button>
+</form>
+
 
 {% endblock %}

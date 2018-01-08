@@ -84,12 +84,19 @@ class TaskController extends BaseController {
                 ));
                 $task_topic->save();
             }
-            
+
             Redirect::to('/show_task/' . $task->id, array('message' => 'New task added successfully'));
         } else {
             $topics = Topic::all();
             View::make('add_task.html', array('topics' => $topics, 'errors' => $errors, 'attributes' => $attributes));
         }
+    }
+
+    public static function destroy($id) {
+        $task = new Task(array('id' => $id));
+        $task->delete($id);
+
+        Redirect::to('/todo_list', array('message' => 'Task deleted successfully'));
     }
 
 }
