@@ -1,5 +1,9 @@
 # Tietokantasovelluksen esittelysivu
 
+Käyttöohje:
+
+Pääsivun yläpalkissa on linkki login-sivulle. Siellä voi kirjautua sisään tunnuksella Thymine ja salasanalla trollol. Pääsivulta pääsee tehtävälistaukseen toistaiseksi lisäämällä osoiteriville /todo_list
+
 Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](http://samleppi.users.cs.helsinki.fi/ToDoManager/)
