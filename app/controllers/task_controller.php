@@ -3,14 +3,22 @@
 class TaskController extends BaseController {
 
     public static function todo_list() {
-        $tasks = Task::all();
-        View::make('todo_list.html', array('tasks' => $tasks));
+        $user_id = self::get_user_logged_in();
+        $user = User::find($user_id);
+        $tasks = Task::find_by_user($user_id);
+        View::make('todo_list.html', array('user' => $user, 'tasks' => $tasks));
     }
 
     public static function show_task($id) {
+        $user_id = self::get_user_logged_in();
         $task = Task::find($id);
-        $topics = Task_topic::findByTask($id);
-        View::make('show_task.html', array('task' => $task, 'topics' => $topics));
+
+        if ($task->owner_id == $user_id) {
+            $topics = Task_topic::findByTask($id);
+            View::make('show_task.html', array('task' => $task, 'topics' => $topics));
+        } else {
+            View::make('/', array('errors' => 'Can not show task, please try again'));
+        }
     }
 
     public static function edit_task($id) {

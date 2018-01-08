@@ -25,6 +25,24 @@ class Task extends BaseModel {
         }
         return null;
     }
+    
+    public static function find_by_user($owner_id) {
+        $query = DB::connection()->prepare('SELECT * FROM Task WHERE owner_id = :owner_id');
+        $query->execute(array('owner_id' => $owner_id));
+        $rows = $query->fetchAll();
+        $tasks = array();
+        foreach ($rows as $row) {
+            $tasks[] = new Task(array(
+                'id' => $row['id'],
+                'task_name' => $row['task_name'],
+                'status' => $row['status'],
+                'notes' => $row['notes'],
+                'owner_id' => $row['owner_id'],
+                'priority' => $row['priority']
+            ));
+        }
+        return $tasks;
+    }
 
     public static function all() {
         $query = DB::connection()->prepare('SELECT * FROM Task');

@@ -52,11 +52,15 @@ $routes->get('/edit_topic/:id', function($id) {
     TopicController::edit_topic($id);
 });
 
+$routes->post('/login', function(){
+  UserController::handle_login();
+});
+
 $routes->get('/login', function() {
-    HelloWorldController::login();
+    UserController::login();
 });
 
 $routes->get('/register', function() {
-    HelloWorldController::register();
+    UserController::register();
 });
 

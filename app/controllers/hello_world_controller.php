@@ -29,12 +29,4 @@ class HelloWorldController extends BaseController {
         Kint::dump($errors);
     }
 
-    public static function login() {
-        View::make('login.html');
-    }
-
-    public static function register() {
-        View::make('register.html');
-    }
-
 }

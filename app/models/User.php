@@ -37,4 +37,18 @@ class User extends BaseModel {
         return $users;
     }
 
+    public static function authenticate($username, $password) {
+        $query = DB::connection()->prepare('SELECT * FROM RegisteredUser WHERE username = :username AND password = :password LIMIT 1');
+        $query->execute(array('username' => $username, 'password' => $password));
+        $row = $query->fetch();
+        if ($row) {
+            return new User(array(
+                'id' => $row['id'],
+                'username' => $row['username'],
+                'password' => $row['password']
+            ));
+        }
+        return NULL;
+    }
+
 }
