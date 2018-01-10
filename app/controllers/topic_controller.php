@@ -3,16 +3,19 @@
 class TopicController extends BaseController {
 
     public static function topic_list() {
+        self::check_logged_in();
         $topics = Topic::all();
         View::make('topic_list.html', array('topics' => $topics));
     }
 
     public static function edit_topic($id) {
+        self::check_logged_in();
         $topic = Topic::find($id);
         View::make('edit_topic.html', array('topic' => $topic));
     }
 
     public static function store() {
+        self::check_logged_in();
         $params = $_POST;
         $attributes = array(
             'name' => $params['name'],
@@ -30,6 +33,7 @@ class TopicController extends BaseController {
     }
 
     public static function update($id) {
+        self::check_logged_in();
         $params = $_POST;
         $attributes = array(
             'id' => $id,
@@ -49,6 +53,7 @@ class TopicController extends BaseController {
     }
 
     public static function destroy($id) {
+        self::check_logged_in();
         $topic = new Topic(array('id' => $id));
         $topic->delete($id);
 

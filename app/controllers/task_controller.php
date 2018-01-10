@@ -3,6 +3,7 @@
 class TaskController extends BaseController {
 
     public static function todo_list() {
+        self::check_logged_in();
         $user_id = self::get_user_logged_in();
         $user = User::find($user_id);
         $tasks = Task::find_by_user($user_id);
@@ -10,6 +11,7 @@ class TaskController extends BaseController {
     }
 
     public static function show_task($id) {
+        self::check_logged_in();
         $user_id = self::get_user_logged_in();
         $task = Task::find($id);
 
@@ -22,6 +24,7 @@ class TaskController extends BaseController {
     }
 
     public static function edit_task($id) {
+        self::check_logged_in();
         $task = Task::find($id);
         $task_topics = array_map(function ($task) {
             return $task->id;
@@ -32,11 +35,13 @@ class TaskController extends BaseController {
     }
 
     public static function add_task() {
+        self::check_logged_in();
         $topics = Topic::all();
         View::make('add_task.html', array('topics' => $topics));
     }
 
     public static function store() {
+        self::check_logged_in();
         $params = $_POST;
         $attributes = array(
             'task_name' => isset($params['task_name']) ? $params['task_name'] : null,
@@ -65,6 +70,7 @@ class TaskController extends BaseController {
     }
 
     public static function update($id) {
+        self::check_logged_in();
         $params = $_POST;
 
         $attributes = array(
@@ -99,6 +105,7 @@ class TaskController extends BaseController {
     }
 
     public static function destroy($id) {
+        self::check_logged_in();
         $task = new Task(array('id' => $id));
         $task->delete($id);
 
