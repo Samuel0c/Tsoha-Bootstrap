@@ -9,6 +9,11 @@
     margin: 0px auto;
 }
 
+.navbar-default {
+    background-color: #c2fcb5;
+    border-color: #E7E7E7;
+}
+
 .tag {
     font-size: 12px;
     padding: .3em .4em .4em;

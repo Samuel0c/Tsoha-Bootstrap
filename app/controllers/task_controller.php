@@ -89,12 +89,14 @@ class TaskController extends BaseController {
             $task->update();
             $task->delete_linked_topics($id);
 
-            foreach ($params['topic_ids'] as $topic_id) {
-                $task_topic = new Task_topic(array(
-                    'topic_id' => $topic_id,
-                    'task_id' => $task->id
-                ));
-                $task_topic->save();
+            if (isset($params['topic_ids'])) {
+                foreach ($params['topic_ids'] as $topic_id) {
+                    $task_topic = new Task_topic(array(
+                        'topic_id' => $topic_id,
+                        'task_id' => $task->id
+                    ));
+                    $task_topic->save();
+                }
             }
 
             Redirect::to('/show_task/' . $task->id, array('message' => 'New task added successfully'));
