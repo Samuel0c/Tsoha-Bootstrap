@@ -10,7 +10,9 @@
     }
 
     public static function check_logged_in(){
-      return isset($_SESSION['user']);
+      if (!isset($_SESSION['user'])) {
+          Redirect::to('/login', array('message' => 'Please login first'));
+      }
     }
 
   }

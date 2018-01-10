@@ -42,8 +42,7 @@ class TaskController extends BaseController {
             'task_name' => isset($params['task_name']) ? $params['task_name'] : null,
             'status' => 'false',
             'notes' => $params['notes'],
-            // change owner id once login has been implemented
-            'owner_id' => 1,
+            'owner_id' => self::get_user_logged_in(),
             'priority' => isset($params['priority']) ? $params['priority'] : null
         );
         $task = new Task($attributes);
@@ -73,8 +72,7 @@ class TaskController extends BaseController {
             'task_name' => isset($params['task_name']) ? $params['task_name'] : null,
             'status' => 'false',
             'notes' => isset($params['notes']) ? $params['notes'] : null,
-            // change owner id once login has been implemented
-            'owner_id' => 1,
+            'owner_id' => self::get_user_logged_in(),
             'priority' => isset($params['priority']) ? $params['priority'] : null
         );
 
