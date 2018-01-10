@@ -31,8 +31,11 @@
         {% for topic in topics %}
         <tr>
             <td>{{topic.name}}</td>
-            <td><a href="{{base_path}}/edit_topic/{{topic.id}}" class="btn btn-default">Edit</a> 
-                <button class="btn btn-danger">Delete</button></td>
+            <td>
+                <form method="post" action="{{base_path}}/topic_list/{{topic.id}}">
+                    <a href="{{base_path}}/edit_topic/{{topic.id}}" class="btn btn-default">Edit</a> 
+                    <button class="btn btn-danger">Delete</button></td>
+            </form>
         </tr>
         {% endfor %}
     </tbody>

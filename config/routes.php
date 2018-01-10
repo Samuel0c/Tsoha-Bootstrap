@@ -36,6 +36,10 @@ $routes->get('/show_task/:id', function($id) {
     TaskController::show_task($id);
 });
 
+$routes->post('/topic_list/:id', function($id) {
+    TopicController::destroy($id);
+});
+
 $routes->post('/topic_list', function() {
     TopicController::store();
 });
@@ -46,6 +50,10 @@ $routes->get('/topic_list', function() {
 
 $routes->get('/add_task', function() {
     TaskController::add_task();
+});
+
+$routes->post('/edit_topic/:id', function($id) {
+    TopicController::update($id);
 });
 
 $routes->get('/edit_topic/:id', function($id) {

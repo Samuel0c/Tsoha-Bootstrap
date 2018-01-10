@@ -29,4 +29,30 @@ class TopicController extends BaseController {
         }
     }
 
+    public static function update($id) {
+        $params = $_POST;
+        $attributes = array(
+            'id' => $id,
+            'name' => isset($params['name']) ? $params['name'] : null,
+        );
+        
+        $topic = new Topic($attributes);
+        $errors = $topic->errors();
+        
+        if (count($errors) > 0) {
+            $topics = Topic::all();
+            View::make('edit_topic.html', array('topics' => $topics, 'errors' => $errors, 'attributes' => $attributes));
+        } else {
+            $topic->update();
+            Redirect::to('/topic_list', array('message' => 'Topic updated successfully'));
+        }
+    }
+
+    public static function destroy($id) {
+        $topic = new Topic(array('id' => $id));
+        $topic->delete($id);
+
+        Redirect::to('/topic_list', array('message' => 'Topic deleted successfully'));
+    }
+
 }
