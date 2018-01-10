@@ -19,8 +19,13 @@ class UserController {
                 'username' => $params['username']));
         } else {
             $_SESSION['user'] = $user->id;
-            Redirect::to('/', array('message' => 'Welcome back ' . $user->username . '!'));
+            Redirect::to('/todo_list', array('message' => 'Welcome back ' . $user->username . '!'));
         }
+    }
+
+    public static function logout() {
+        $_SESSION['user'] = null;
+        Redirect::to('/', array('message' => 'You have successfully logged out'));
     }
 
 }

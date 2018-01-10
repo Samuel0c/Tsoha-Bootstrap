@@ -41,3 +41,17 @@
 .green, .green a {
     background-color: #88df73;
 }
+
+.unstyled-button {
+    border: none;
+    padding: 0;
+    background: none;
+    padding-top: 7px;
+    color: #777;
+    font-size: 15px;
+}
+
+.unstyled-button:hover {
+    color: #333;
+}
+

@@ -60,12 +60,16 @@ $routes->get('/edit_topic/:id', function($id) {
     TopicController::edit_topic($id);
 });
 
-$routes->post('/login', function(){
-  UserController::handle_login();
+$routes->post('/login', function() {
+    UserController::handle_login();
 });
 
 $routes->get('/login', function() {
     UserController::login();
+});
+
+$routes->post('/logout', function() {
+    UserController::logout();
 });
 
 $routes->get('/register', function() {
