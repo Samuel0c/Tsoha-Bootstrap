@@ -2,7 +2,7 @@
 
 Käyttöohje:
 
-Pääsivun yläpalkissa on linkki login-sivulle. Siellä voi kirjautua sisään tunnuksella Thymine ja salasanalla trollol. Pääsivulta pääsee tehtävälistaukseen toistaiseksi lisäämällä osoiteriville /todo_list
+Pääsivun yläpalkissa on linkki login-sivulle. Siellä voi kirjautua sisään tunnuksella Thymine ja salasanalla trollol.
 
 Yleisiä linkkejä:
 
