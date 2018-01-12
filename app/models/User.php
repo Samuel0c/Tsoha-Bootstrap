@@ -6,7 +6,7 @@ class User extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_username', 'validate_password');
+        $this->validators = array('validate_username_length', 'validate_password_length');
     }
 
     public static function find($id) {
@@ -58,12 +58,23 @@ class User extends BaseModel {
         $row = $query->fetch();
         $this->id = $row['id'];
     }
+    
+//    public function validate_username_not_taken() {
+//        $query = DB::connection()->prepare('SELECT COUNT(*) FROM RegisteredUser WHERE username = :username');
+//        $query->execute(array('username' => $this->username));
+//        $row = $query->fetch();
+//        $this->errors() = array();
+//        if ($row > 0) {
+//            $this->errors[] = 'Username is already taken';
+//        return $this->errors();
+//        }
+//    }
 
-    public function validate_username() {
+    public function validate_username_length() {
         return $this->validate_string_length($this->username, 2);
     }
     
-    public function validate_password() {
+    public function validate_password_length() {
         return $this->validate_string_length($this->password, 6);
     }
 
