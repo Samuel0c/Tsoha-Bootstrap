@@ -3,11 +3,11 @@
 class UserController {
 
     public static function login() {
-        View::make('login.html');
+        View::make('user/login.html');
     }
 
     public static function show_register() {
-        View::make('register.html');
+        View::make('user/register.html');
     }
 
     public static function register() {
@@ -24,7 +24,7 @@ class UserController {
             $user->register();
             Redirect::to('/', array('message' => 'Registration complete'));
         } else {
-            View::make('register.html');
+            View::make('user/register.html');
         }
     }
 
@@ -33,7 +33,7 @@ class UserController {
         $user = User::authenticate($params['username'], $params['password']);
 
         if (!$user) {
-            View::make('login.html', array('error' => 'Incorrect username or password',
+            View::make('user/login.html', array('error' => 'Incorrect username or password',
                 'username' => $params['username']));
         } else {
             $_SESSION['user'] = $user->id;

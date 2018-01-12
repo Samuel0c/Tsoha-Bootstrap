@@ -5,13 +5,13 @@ class TopicController extends BaseController {
     public static function topic_list() {
         self::check_logged_in();
         $topics = Topic::all();
-        View::make('topic_list.html', array('topics' => $topics));
+        View::make('topic/topic_list.html', array('topics' => $topics));
     }
 
     public static function edit_topic($id) {
         self::check_logged_in();
         $topic = Topic::find($id);
-        View::make('edit_topic.html', array('topic' => $topic));
+        View::make('topic/edit_topic.html', array('topic' => $topic));
     }
 
     public static function store() {
@@ -28,7 +28,7 @@ class TopicController extends BaseController {
             Redirect::to('/topic_list', array('message' => 'New topic added successfully'));
         } else {
             $topics = Topic::all();
-            View::make('topic_list.html', array('topics' => $topics, 'errors' => $errors, 'attributes' => $attributes));
+            View::make('topic/topic_list.html', array('topics' => $topics, 'errors' => $errors, 'attributes' => $attributes));
         }
     }
 
@@ -45,7 +45,7 @@ class TopicController extends BaseController {
         
         if (count($errors) > 0) {
             $topics = Topic::all();
-            View::make('edit_topic.html', array('topics' => $topics, 'errors' => $errors, 'attributes' => $attributes));
+            View::make('topic/edit_topic.html', array('topics' => $topics, 'errors' => $errors, 'attributes' => $attributes));
         } else {
             $topic->update();
             Redirect::to('/topic_list', array('message' => 'Topic updated successfully'));

@@ -7,7 +7,7 @@ class TaskController extends BaseController {
         $user_id = self::get_user_logged_in();
         $user = User::find($user_id);
         $tasks = Task::find_by_user($user_id);
-        View::make('todo_list.html', array('user' => $user, 'tasks' => $tasks));
+        View::make('task/todo_list.html', array('user' => $user, 'tasks' => $tasks));
     }
 
     public static function show_task($id) {
@@ -17,7 +17,7 @@ class TaskController extends BaseController {
 
         if ($task->owner_id == $user_id) {
             $topics = Task_topic::findByTask($id);
-            View::make('show_task.html', array('task' => $task, 'topics' => $topics));
+            View::make('task/show_task.html', array('task' => $task, 'topics' => $topics));
         } else {
             View::make('/', array('errors' => 'Can not show task, please try again'));
         }
@@ -31,13 +31,13 @@ class TaskController extends BaseController {
         }, Task_topic::findByTask($id));
 
         $topics = Topic::all();
-        View::make('edit_task.html', array('task' => $task, 'task_topics' => $task_topics, 'topics' => $topics));
+        View::make('task/edit_task.html', array('task' => $task, 'task_topics' => $task_topics, 'topics' => $topics));
     }
 
     public static function add_task() {
         self::check_logged_in();
         $topics = Topic::all();
-        View::make('add_task.html', array('topics' => $topics));
+        View::make('task/add_task.html', array('topics' => $topics));
     }
 
     public static function store() {
@@ -57,7 +57,7 @@ class TaskController extends BaseController {
             $task->save();
         } else {
             $topics = Topic::all();
-            View::make('add_task.html', array('topics' => $topics, 'errors' => $errors, 'attributes' => $attributes));
+            View::make('task/add_task.html', array('topics' => $topics, 'errors' => $errors, 'attributes' => $attributes));
         }
         if (isset($params['topic_ids'])) {
             foreach ($params['topic_ids'] as $topic_id) {
@@ -104,7 +104,7 @@ class TaskController extends BaseController {
             Redirect::to('/show_task/' . $task->id, array('message' => 'New task added successfully'));
         } else {
             $topics = Topic::all();
-            View::make('add_task.html', array('topics' => $topics, 'errors' => $errors, 'attributes' => $attributes));
+            View::make('task/edit_task.html', array('topics' => $topics, 'errors' => $errors, 'attributes' => $attributes));
         }
     }
 

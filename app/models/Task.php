@@ -97,5 +97,9 @@ class Task extends BaseModel {
         }
         return $errors;
     }
+    
+    public static function get_owner_id () {
+        return $this->owner_id;
+    }
 
 }
