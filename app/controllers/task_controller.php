@@ -45,7 +45,7 @@ class TaskController extends BaseController {
         $params = $_POST;
         $attributes = array(
             'task_name' => isset($params['task_name']) ? $params['task_name'] : null,
-            'status' => 'false',
+            'status' => FALSE,
             'notes' => $params['notes'],
             'owner_id' => self::get_user_logged_in(),
             'priority' => isset($params['priority']) ? $params['priority'] : null
@@ -59,12 +59,14 @@ class TaskController extends BaseController {
             $topics = Topic::all();
             View::make('add_task.html', array('topics' => $topics, 'errors' => $errors, 'attributes' => $attributes));
         }
-        foreach ($params['topic_ids'] as $topic_id) {
-            $task_topic = new Task_topic(array(
-                'topic_id' => $topic_id,
-                'task_id' => $task->id
-            ));
-            $task_topic->save();
+        if (isset($params['topic_ids'])) {
+            foreach ($params['topic_ids'] as $topic_id) {
+                $task_topic = new Task_topic(array(
+                    'topic_id' => $topic_id,
+                    'task_id' => $task->id
+                ));
+                $task_topic->save();
+            }
         }
         Redirect::to('/show_task/' . $task->id, array('message' => 'New task added successfully'));
     }
@@ -76,7 +78,7 @@ class TaskController extends BaseController {
         $attributes = array(
             'id' => $id,
             'task_name' => isset($params['task_name']) ? $params['task_name'] : null,
-            'status' => 'false',
+            'status' => !(empty($params['status'])),
             'notes' => isset($params['notes']) ? $params['notes'] : null,
             'owner_id' => self::get_user_logged_in(),
             'priority' => isset($params['priority']) ? $params['priority'] : null

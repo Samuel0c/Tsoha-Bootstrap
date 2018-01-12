@@ -64,14 +64,15 @@ class Task extends BaseModel {
 
     public function save() {
         $query = DB::connection()->prepare('INSERT INTO Task (task_name, status, notes, owner_id, priority) VALUES (:task_name, :status, :notes, :owner_id, :priority) RETURNING id');
-        $query->execute(array('task_name' => $this->task_name, 'status' => $this->status, 'notes' => $this->notes, 'owner_id' => $this->owner_id, 'priority' => $this->priority));
+        $query->execute(array('task_name' => $this->task_name, 'status' => "false", 'notes' => $this->notes, 'owner_id' => $this->owner_id, 'priority' => $this->priority));
         $row = $query->fetch();
         $this->id = $row['id'];
     }
     
     public function update() {
+        $isDone = $this->status ? "true" : "false";
         $query = DB::connection()->prepare('UPDATE Task SET task_name=:task_name, status=:status, notes=:notes, owner_id=:owner_id, priority=:priority WHERE id=:id');
-        $query->execute(array('id' => $this->id,'task_name' => $this->task_name, 'status' => $this->status, 'notes' => $this->notes, 'owner_id' => $this->owner_id, 'priority' => $this->priority));
+        $query->execute(array('id' => $this->id,'task_name' => $this->task_name, 'status' => $isDone, 'notes' => $this->notes, 'owner_id' => $this->owner_id, 'priority' => $this->priority));
     }
     
     public function delete($id) {

@@ -6,8 +6,26 @@ class UserController {
         View::make('login.html');
     }
 
-    public static function register() {
+    public static function show_register() {
         View::make('register.html');
+    }
+
+    public static function register() {
+        $params = $_POST;
+        $attributes = array(
+            'username' => isset($params['username']) ? $params['username'] : null,
+            'password' => isset($params['password']) ? $params['password'] : null,
+        );
+        
+        $user = new User($attributes);
+        $errors = $user->errors();
+
+        if (empty($errors)) {
+            $user->register();
+            Redirect::to('/', array('message' => 'Registration complete'));
+        } else {
+            View::make('register.html');
+        }
     }
 
     public static function handle_login() {
