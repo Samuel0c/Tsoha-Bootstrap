@@ -4,9 +4,8 @@ class TaskController extends BaseController {
 
     public static function todo_list() {
         self::check_logged_in();
-        $user_id = self::get_user_logged_in();
-        $user = User::find($user_id);
-        $tasks = Task::find_by_user($user_id);
+        $user = User::find(self::get_user_logged_in());
+        $tasks = Task::find_by_user($user->id);
         View::make('task/todo_list.html', array('user' => $user, 'tasks' => $tasks));
     }
 
