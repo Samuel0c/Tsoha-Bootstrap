@@ -12,20 +12,21 @@ class TaskController extends BaseController {
 
     public static function show_task($id) {
         self::check_logged_in();
-        $user_id = self::get_user_logged_in();
         $task = Task::find($id);
-
-        if ($task->owner_id == $user_id) {
-            $topics = Task_topic::findByTask($id);
-            View::make('task/show_task.html', array('task' => $task, 'topics' => $topics));
-        } else {
-            View::make('/', array('errors' => 'Can not show task, please try again'));
+        
+        if ($task->owner_id != self::get_user_logged_in()) {
+            Redirect::to('/todo_list', array('message' => 'You can only view your own tasks'));
         }
+        $topics = Task_topic::findByTask($id);
+        View::make('task/show_task.html', array('task' => $task, 'topics' => $topics));
     }
 
     public static function edit_task($id) {
         self::check_logged_in();
         $task = Task::find($id);
+        if ($task->owner_id != self::get_user_logged_in()) {
+            Redirect::to('/todo_list', array('message' => 'You can only edit your own tasks'));
+        }
         $task_topics = array_map(function ($task) {
             return $task->id;
         }, Task_topic::findByTask($id));
