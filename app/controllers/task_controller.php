@@ -85,6 +85,11 @@ class TaskController extends BaseController {
         );
 
         $task = new Task($attributes);
+
+        $task_topics = array_map(function ($task) {
+            return $task->id;
+        }, Task_topic::findByTask($id));
+
         $errors = $task->errors();
 
         if (empty($errors)) {
@@ -104,7 +109,7 @@ class TaskController extends BaseController {
             Redirect::to('/show_task/' . $task->id, array('message' => 'New task added successfully'));
         } else {
             $topics = Topic::all();
-            View::make('task/edit_task.html', array('topics' => $topics, 'errors' => $errors, 'task' => $task));
+            View::make('task/edit_task.html', array('topics' => $topics, 'task_topics' => $task_topics, 'errors' => $errors, 'task' => $task));
         }
     }
 
