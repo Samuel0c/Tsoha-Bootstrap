@@ -8,9 +8,6 @@ class HomeController extends BaseController {
 
     public static function sandbox() {
         // Testaa koodiasi täällä
-//        echo HelloWorld::say_hi();
-//        echo 'Hello World!';
-//        View::make('helloworld.html');
         $doom = new Task(array(
             'task_name' => 't',
             'status' => '',
